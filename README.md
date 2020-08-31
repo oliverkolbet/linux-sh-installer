@@ -6,7 +6,7 @@ Check out my q repository!
 
 This is based on the install.sh file in the q repository.
 
-Usage:
+# Usage:
 
 Type ``./installer.sh [SCRIPT]`` to install it.
 
@@ -16,6 +16,12 @@ It will make a .[SCRIPT] directory in your home folder and add the .sh file. It 
 
 It will also add a few lines of code in the bashrc to make the script in .SCRIPT to run every time bash starts.
 
-Example:
+# Example:
 
-``cd`` to the example directory and type ``../installer.sh example``.  It will rerun the bashrc. Once it is done, type test. It should output "This is a test!"
+``cd`` to the example directory and type ``../installer.sh example``.  It will rerun the bashrc. Once it is done, type test. It should output "This is a test."
+
+Check the file in ~/.example/log.txt 
+
+It should have some text in it.
+
+Also, feel free to look at any of the code in the example folder. 
