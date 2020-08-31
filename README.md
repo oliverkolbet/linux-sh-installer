@@ -15,3 +15,7 @@ Make sure that SCRIPT is not SCRIPT.sh, but just the prefix.
 It will make a .[SCRIPT] directory in your home folder and add the .sh file. It will also add any files in any [SCRIPT].d directory, excluding files that contain '.tmp'.
 
 It will also add a few lines of code in the bashrc to make the script in .SCRIPT to run every time bash starts.
+
+Example:
+
+``cd`` to the example directory and type ``../installer.sh example``.  It will rerun the bashrc. Once it is done, type test. It should output "This is a test!"
