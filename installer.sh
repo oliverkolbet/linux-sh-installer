@@ -15,7 +15,7 @@ echo "These shell scripts are available:"
 ls *.sh
 exit
 else
-echo "There are no shell scripts in your current directory, you need to make one."
+echo -e "There are no shell scripts in your current directory, you need to make one.\a"
 exit
 fi
 fi
@@ -23,7 +23,7 @@ case $(ls -a) in
     *$dep.sh*)
     ;;
     *)
-    echo "The shell script you selected does not exist."
+    echo -e "The shell script you selected does not exist.\a"
     exit
     ;;
 esac
@@ -34,7 +34,7 @@ if [ "$2" == 'uninstall' ]; then
         rm -r ~/.$dep
     ;;
     *)
-    echo "$dep is not installed, so not removed."
+    echo -e "$dep is not installed, so not removed.\a"
     ;;
     esac
     exit
@@ -44,7 +44,7 @@ else
         fcon="$(cat ~/.$dep/$dep.sh)"
         tfcon="$(cat $dep.sh)"
         if [ "$tfcon" == "$fcon" ]; then
-            echo -e "$dep is already the newest version."
+            echo -e "$dep is already the newest version.\a"
             exit
         else
             echo "$dep is installed, but not the most recent version."
@@ -94,7 +94,7 @@ else
             ;;
         esac
     cp $dep.sh ~/.$dep
-    echo "$dep successfully installed."
+    echo "$dep successfully installed.\a"
     ;;
     esac
     sleep 1s
