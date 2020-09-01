@@ -1,5 +1,6 @@
 #! /bin/bash
 dep="$1"
+u="$2"
 if [ "$dep" == 'uninstall' ]; then
 echo -ne "Are you sure you want to install \033[94muninstall.sh\033[00m? [y/n]:"
 read yn
@@ -9,8 +10,8 @@ else
 echo -ne "Then, would you like to uninstall $2? [y/n]:"
 read yn
 if [ "$yn" == 'y' ]; then
-"$dep"="$2" 
-"$2"=uninstall
+dep="$2" 
+u=uninstall
 fi
 fi
 elif [ "$1" == '' ]; then
@@ -31,7 +32,7 @@ else
     echo -e "The shell script you selected does not exist.\a"
     exit
 fi
-if [ "$2" == 'uninstall' ]; then
+if [ "$u" == 'uninstall' ]; then
     if [ -d .$dep ]; then
         echo "Removing $dep..."
         rm -r ~/.$dep
@@ -89,7 +90,7 @@ else
             ;;
         esac
     cp $dep.sh ~/.$dep
-    echo "$dep successfully installed.\a"
+    echo -e "$dep successfully installed.\a"
     fi
     sleep 1s
     if grep -q ". ~/.$dep/$dep.sh" ~/.bashrc; then
