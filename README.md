@@ -8,9 +8,15 @@ This is based on the install.sh file in the q repository.
 
 It is made to work with any file.
 
+# Installation:
+
+Make sure you are a user with sudo permissions.
+
+type ``./installer.sh installer`` to make the installer install itself.
+
 # Usage:
 
-Type ``./installer.sh [SCRIPT]`` to install it.
+Type ``installsh [SCRIPT]`` to install that shell script.
 
 Make sure that SCRIPT is not SCRIPT.sh, but just the prefix. 
 

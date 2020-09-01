@@ -1,5 +1,19 @@
 #! /bin/bash
 dep="$1"
+if [ "$dep" == 'installer' ]; then
+case $(cat installer.sh) in
+*ORIGINAL_INSTALLER_TO_INSTALL_SH_FILES__371fdgwbq8uygFsB7yud3bwq87*)
+sudo cp installer.sh /usr/local/bin/installsh
+sudo chmod +x /usr/local/bin/installsh
+echo "Installer installed.\a Use \"installsh [FILE]\" to install a sh file. Read the README for more information."
+exit
+;;
+*)
+echo "OK, installing installer.sh"
+;;
+esac
+exit
+fi
 u="$2"
 if [ "$dep" == 'uninstall' ]; then
 echo -ne "Are you sure you want to install \033[94muninstall.sh\033[00m? [y/n]:"
