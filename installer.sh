@@ -6,7 +6,12 @@ read yn
 if [ "$yn" == 'y' ]; then
 echo "OK, installing uninstall.sh."
 else
-exit
+echo -ne "Then, would you like to uninstall $2? [y/n]:"
+read yn
+if [ "$yn" == 'y' ]; then
+"$dep"="$2" 
+"$2"=uninstall
+fi
 fi
 elif [ "$1" == '' ]; then
 echo "You didn't specify a shell script."
@@ -19,28 +24,23 @@ echo -e "There are no shell scripts in your current directory, you need to make 
 exit
 fi
 fi
-case $(ls -a) in
-    *$dep.sh*)
-    ;;
-    *)
+
+if [ -f $dep.sh ]; then
+echo -ne ''
+else
     echo -e "The shell script you selected does not exist.\a"
     exit
-    ;;
-esac
+fi
 if [ "$2" == 'uninstall' ]; then
-    case $(ls -a ~) in
-    *.$dep*)
+    if [ -d .$dep ]; then
         echo "Removing $dep..."
         rm -r ~/.$dep
-    ;;
-    *)
+    else
     echo -e "$dep is not installed, so not removed.\a"
-    ;;
-    esac
+    fi
     exit
 else
-    case $(ls -a ~) in
-        *.$dep*)
+    if [ -d .$dep ]; then
         fcon="$(cat ~/.$dep/$dep.sh)"
         tfcon="$(cat $dep.sh)"
         if [ "$tfcon" == "$fcon" ]; then
@@ -70,19 +70,14 @@ else
                 esac
                 fi
         fi
-        ;;
-        *)
+        else
         mkdir ~/.$dep
         cp $dep.sh ~/.dep
-        case $(ls) in
-            *$dep.d*)
+        if [ -d $dep.d ]; then
             cd $dep.d
             cp * ~/.$dep
             cd ..
-            ;;
-            *)
-            ;;
-            esac
+            fi
 
         case $(ls ~/.$dep/) in
             *.tmp)
@@ -95,13 +90,12 @@ else
         esac
     cp $dep.sh ~/.$dep
     echo "$dep successfully installed.\a"
-    ;;
-    esac
+    fi
     sleep 1s
     if grep -q ". ~/.$dep/$dep.sh" ~/.bashrc; then
         echo "$dep is already installed in bashrc"
     else
-        echo -e "case \$(ls -a ~) in\n*.$dep*)\n. ~/.$dep/$dep.sh;;\n*)\n;;\nesac" >> ~/.bashrc
+        echo -e "if [ -d ~/.$dep ]; then\n. ~/.$dep/$dep.sh\nfi" >> ~/.bashrc
     fi
     echo "Running $dep through .bashrc..."
     bash

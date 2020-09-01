@@ -6,6 +6,8 @@ Check out my q repository!
 
 This is based on the install.sh file in the q repository.
 
+It is made to work with any file.
+
 # Usage:
 
 Type ``./installer.sh [SCRIPT]`` to install it.
