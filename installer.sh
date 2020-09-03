@@ -5,7 +5,7 @@ case $(cat installer.sh) in
 *ORIGINAL_INSTALLER_TO_INSTALL_SH_FILES__371fdgwbq8uygFsB7yud3bwq87*)
 sudo cp installer.sh /usr/local/bin/installsh
 sudo chmod +x /usr/local/bin/installsh
-echo -e "Installer installed.\a Use \"installsh [FILE]\" to install a sh file. Read the README for more information."
+echo -e "Installer installed.\a Use \"installsh [FILE]\" to install an sh file. Read the README for more information."
 exit
 ;;
 *)
